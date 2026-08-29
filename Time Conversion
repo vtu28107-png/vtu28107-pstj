@@ -1,0 +1,20 @@
+String modifier = s.substring(8);
+        
+        // Extract the hour integer
+        int hour = Integer.parseInt(s.substring(0, 2));
+        
+        // Extract middle minutes and seconds string (:MM:SS)
+        String middle = s.substring(2, 8);
+        
+        if (modifier.equals("AM")) {
+            if (hour == 12) {
+                hour = 0;
+            }
+        } else if (modifier.equals("PM")) {
+            if (hour != 12) {
+                hour += 12;
+            }
+        }
+        
+        // Format hour with leading zero if needed and combine
+        return String.format("%02d%s", hour, middle);
